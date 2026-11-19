@@ -1,0 +1,93 @@
+@import './styles/header.css';
+@import './styles/home.css';
+@import './styles/home-motion.css';
+
+.container {
+  width: min(100% - clamp(32px, 10vw, 144px), 1280px);
+  margin-inline: auto;
+}
+
+.section { padding-block: clamp(64px, 9vw, 132px); }
+
+.section-heading { margin-bottom: clamp(24px, 4vw, 52px); }
+
+.section-heading h2 {
+  font-family: var(--heading-font);
+  font-size: clamp(2.65rem, 5.8vw, 5rem);
+  font-weight: 900;
+  line-height: .98;
+  letter-spacing: -.025em;
+  text-transform: uppercase;
+}
+
+.section-description {
+  margin-top: 14px;
+  color: var(--gray);
+  line-height: 1.55;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  font-size: .74rem;
+  font-weight: 800;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 25px;
+  height: 3px;
+  background: var(--yellow);
+}
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.button {
+  display: inline-flex;
+  min-height: 50px;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  padding: 11px 18px;
+  border: 1px solid transparent;
+  font-size: .75rem;
+  font-weight: 850;
+  line-height: 1.25;
+  letter-spacing: .055em;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color .2s, color .2s, border-color .2s;
+}
+
+.button-arrow { font-size: 1.05rem; line-height: 1; }
+
+.button--yellow { background: var(--yellow); color: var(--black); }
+.button--yellow:hover { background: var(--white); }
+.button--yellow:focus-visible { outline-color: var(--yellow); }
+.button--outline { border-color: var(--chrome); }
+.button--outline:hover { border-color: var(--yellow); color: var(--yellow); }
+.button--dark { background: var(--black); color: var(--white); }
+.button--dark:hover { background: var(--charcoal); color: var(--yellow); }
+
+.skip-link {
+  position: fixed;
+  z-index: 20;
+  top: 12px;
+  left: 12px;
+  padding: 10px 14px;
+  transform: translateY(-200%);
+  background: var(--yellow);
+  color: var(--black);
+  font-weight: 700;
+}
+
+.skip-link:focus { transform: none; }
