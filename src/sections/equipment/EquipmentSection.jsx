@@ -1,4 +1,4 @@
-﻿const equipment = ['JCB Excavators', 'Vermeer D20x22', 'Construction Equipment']
+import { equipment } from '../../data/site.js'
 
 export default function EquipmentSection() {
   return (

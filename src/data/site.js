@@ -14,6 +14,8 @@ export const navigation = [
   { id: 'contact', label: 'Contact' },
 ]
 
+export const equipment = ['JCB Excavators', 'Vermeer D20x22', 'Construction Equipment']
+
 export const services = [
   { name: 'Directional Boring', icon: 'boring', description: 'Create underground paths for utilities with limited surface disruption.' },
   { name: 'Utility Trenching', icon: 'trenching', description: 'Cut trenches for utility lines, drainage and other underground installations.' },
