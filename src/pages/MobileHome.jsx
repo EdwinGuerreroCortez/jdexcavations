@@ -44,7 +44,7 @@ function MobileHeader({ openProjects }) {
 
   return (
     <header className="mobile-header" onKeyDown={closeOnEscape}>
-      <Brand onClick={() => setOpen(false)} />
+      <Brand name="JD Excavations" onClick={() => setOpen(false)} />
       <a className="mobile-header-phone" href={contact.phoneHref} aria-label="Call JD Excavation"><MobileIcon name="phone" /></a>
       <button
         className="mobile-icon-button"
