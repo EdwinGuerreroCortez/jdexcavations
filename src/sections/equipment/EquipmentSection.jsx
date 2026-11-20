@@ -14,7 +14,7 @@ export default function EquipmentSection() {
     <section id="equipment" className="section equipment-section" aria-labelledby="equipment-title" tabIndex={-1}>
       <div className="container">
         <div className="equipment-heading">
-          <SectionHeading id="equipment-title" eyebrow="Equipment">Equipment</SectionHeading>
+          <SectionHeading id="equipment-title" eyebrow="Excavation & Drilling">Equipment</SectionHeading>
           <button className="equipment-view-all text-link" type="button" aria-haspopup="dialog" onClick={() => allEquipment.current.showModal()}>
             <span>View all equipment</span> <span aria-hidden="true">→</span>
           </button>

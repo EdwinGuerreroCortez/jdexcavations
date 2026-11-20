@@ -1,6 +1,6 @@
 import Brand from '../common/Brand.jsx'
 import ContactLinks from '../common/ContactLinks.jsx'
-import { contact, navigation } from '../../data/site.js'
+import { contact, navigation, navigationHref, servicesPath } from '../../data/site.js'
 import './footer.css'
 
 const serviceLinks = [
@@ -15,22 +15,22 @@ function FooterNavigation({ title, links }) {
     <nav aria-label={title}>
       <h2>{title}</h2>
       <ul className="footer-links">
-        {links.map(({ id, label }) => <li key={id}><a href={`#${id}`}>{label}</a></li>)}
+        {links.map(({ href, label }) => <li key={href}><a href={href}>{label}</a></li>)}
       </ul>
     </nav>
   )
 }
 
-export default function Footer() {
+export default function Footer({ currentPage }) {
   return (
     <footer className="site-footer">
       <div className="container footer-inner">
         <div className="footer-brand">
-          <Brand footer fullLogo />
+          <Brand footer fullLogo href={navigationHref('home', currentPage)} />
           <p>JD Excavation<br />{contact.area}</p>
         </div>
-        <FooterNavigation title="Navigate" links={navigation} />
-        <FooterNavigation title="Services" links={serviceLinks} />
+        <FooterNavigation title="Navigate" links={navigation.map(({ id, label }) => ({ label, href: navigationHref(id, currentPage) }))} />
+        <FooterNavigation title="Services" links={serviceLinks.map(({ id, label }) => ({ label, href: `${servicesPath}#${id}` }))} />
         <div className="footer-contact">
           <h2>Contact</h2>
           <ContactLinks />

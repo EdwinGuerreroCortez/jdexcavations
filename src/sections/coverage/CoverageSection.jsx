@@ -77,17 +77,17 @@ export default function CoverageSection() {
         </div>
         <div className="coverage-cta" data-reveal>
           <div className="coverage-cta-title"><InterfaceIcon name="hardhat" /><h2>Ready to start your project?</h2></div>
-          <p>Tell us what you need and request a quote.</p>
-          <a className="button button--yellow coverage-quote" href={contact.websiteHref}>Request a quote <InterfaceIcon name="arrow" /></a>
+          <p>Tell us what you need and get a free quote.</p>
+          <a className="button button--yellow coverage-quote" href={contact.whatsappHref}>{contact.quoteLabel} <InterfaceIcon name="arrow" /></a>
         </div>
       </div>
-      <CatalogDialog dialogRef={dialog} title={selection?.label ?? 'Request a quote'} onClose={() => setSelection(null)}>
+      <CatalogDialog dialogRef={dialog} title={selection?.label ?? contact.quoteLabel} onClose={() => setSelection(null)}>
         <p className="coverage-dialog-copy">
           {selection?.isCounty
             ? 'Share your job site address and the work you need so we can prepare your quote.'
             : 'Tell us where the project is and what you need done so we can prepare your quote.'}
         </p>
-        <a className="button button--yellow coverage-quote" href={contact.websiteHref}>Request a quote <InterfaceIcon name="arrow" /></a>
+        <a className="button button--yellow coverage-quote" href={contact.whatsappHref}>{contact.quoteLabel} <InterfaceIcon name="arrow" /></a>
       </CatalogDialog>
     </section>
   )

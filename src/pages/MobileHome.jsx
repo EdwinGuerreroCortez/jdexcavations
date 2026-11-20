@@ -1,19 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
-import Brand from '../components/common/Brand.jsx'
+import { MobileHeader, MobileTabBar } from '../components/layout/MobileNavigation.jsx'
 import HomeMedia from '../components/common/HomeMedia.jsx'
 import MobileIcon from '../components/ui/MobileIcon.jsx'
-import { contact, equipment, services } from '../data/site.js'
-import { projects } from '../data/projects.js'
-import ProjectGallery from '../sections/projects/ProjectGallery.jsx'
+import { contact, equipment, projectsPath, services, servicesPath } from '../data/site.js'
 import '../styles/mobile-home.css'
-
-const tabs = [
-  { id: 'home', title: 'Home', icon: 'home' },
-  { id: 'services', title: 'Services', icon: 'grid' },
-  { id: 'equipment', title: 'Fleet', icon: 'fleet' },
-  { id: 'projects', title: 'Projects', icon: 'hardhat' },
-  { id: 'contact', title: 'Contact', icon: 'mail' },
-]
 
 const slides = [
   { slot: 'HERO_BACKGROUND', title: 'Excavation' },
@@ -29,43 +19,6 @@ const featuredServices = [
 ]
 
 const serviceById = Object.fromEntries(services.map((service) => [service.icon, service]))
-const panelTitles = { services: 'Our services', equipment: 'Our fleet', projects: 'Our work' }
-
-function MobileHeader({ openProjects }) {
-  const [open, setOpen] = useState(false)
-  const menuButton = useRef(null)
-
-  function closeOnEscape(event) {
-    if (open && event.key === 'Escape') {
-      setOpen(false)
-      menuButton.current.focus()
-    }
-  }
-
-  return (
-    <header className="mobile-header" onKeyDown={closeOnEscape}>
-      <Brand name="JD Excavations" onClick={() => setOpen(false)} />
-      <a className="mobile-header-phone" href={contact.phoneHref} aria-label="Call JD Excavation"><MobileIcon name="phone" /></a>
-      <button
-        className="mobile-icon-button"
-        type="button"
-        ref={menuButton}
-        aria-label={open ? 'Close menu' : 'Open menu'}
-        aria-controls="mobile-menu"
-        aria-expanded={open}
-        onClick={() => setOpen(!open)}
-      >
-        <MobileIcon name={open ? 'close' : 'menu'} />
-      </button>
-      <nav id="mobile-menu" className="mobile-menu" aria-label="Main navigation" hidden={!open}>
-        {tabs.map(({ id, title }) => id === 'projects' ? (
-          <button key={id} type="button" aria-haspopup="dialog" onClick={() => { setOpen(false); menuButton.current.focus(); openProjects() }}>{title}</button>
-        ) : <a key={id} href={`#${id}`} onClick={() => setOpen(false)}>{title}</a>)}
-        <a href={contact.whatsappHref} target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
-      </nav>
-    </header>
-  )
-}
 
 function MobileHero() {
   const [active, setActive] = useState(0)
@@ -81,7 +34,7 @@ function MobileHero() {
         </div>
       </div>
       <div className="mobile-hero-actions">
-        <a className="mobile-action" href={contact.websiteHref}>Request a quote <MobileIcon name="arrow" /></a>
+        <a className="mobile-action" href={contact.whatsappHref}>{contact.quoteLabel} <MobileIcon name="arrow" /></a>
         <a className="mobile-action mobile-action--outline" href={contact.phoneHref}>Call now <MobileIcon name="arrow" /></a>
       </div>
       <div className="mobile-hero-dots" aria-label="Hero images" role="group">
@@ -93,12 +46,12 @@ function MobileHero() {
   )
 }
 
-function MobileServices({ openServices }) {
+function MobileServices() {
   return (
     <section id="services" className="mobile-services" data-mobile-section aria-labelledby="mobile-services-title">
       <div className="mobile-section-heading">
         <h2 id="mobile-services-title">Our Services</h2>
-        <button className="mobile-action mobile-action--outline" type="button" aria-haspopup="dialog" onClick={openServices}>View all <MobileIcon name="arrow" /></button>
+        <a className="mobile-action mobile-action--outline" href={servicesPath}>View all <MobileIcon name="arrow" /></a>
       </div>
       <div className="mobile-service-grid">
         {featuredServices.map(({ id, slot, title = serviceById[id].name }) => (
@@ -115,31 +68,15 @@ function MobileServices({ openServices }) {
   )
 }
 
-function MobilePanel({ dialog, panel }) {
+function MobileFleetPanel({ dialog }) {
   return (
-    <dialog ref={dialog} className="mobile-panel" aria-labelledby="mobile-panel-title">
+    <dialog ref={dialog} className="mobile-panel" aria-labelledby="mobile-fleet-panel-title">
       <div className="mobile-panel-heading">
-        <h2 id="mobile-panel-title">{panelTitles[panel]}</h2>
+        <h2 id="mobile-fleet-panel-title">Our fleet</h2>
         <button type="button" className="mobile-icon-button" aria-label="Close" onClick={() => dialog.current.close()}><MobileIcon name="close" /></button>
       </div>
-      {panel === 'services' && (
-        <ul className="mobile-panel-list">
-          {services.map(({ name, description }) => <li key={name}><h3>{name}</h3><p>{description}</p></li>)}
-        </ul>
-      )}
-      {panel === 'equipment' && (
-        <>
-          <HomeMedia slot="ABOUT_EQUIPMENT" className="mobile-panel-photo" />
-          <ul className="mobile-panel-list">{equipment.map(({ name }) => <li key={name}>{name}</li>)}</ul>
-        </>
-      )}
-      {panel === 'projects' && (
-        <>
-          <figure><HomeMedia slot="UNDERGROUND_UTILITIES" className="mobile-panel-photo" /><figcaption>Underground utilities · Dallas, TX</figcaption></figure>
-          <figure><HomeMedia slot="RESIDENTIAL_TRENCHING" className="mobile-panel-photo" /><figcaption>Residential trenching · Dallas, TX</figcaption></figure>
-          {projects.length > 0 && <ProjectGallery photos={projects} visibleCount={projects.length} />}
-        </>
-      )}
+      <HomeMedia slot="ABOUT_EQUIPMENT" className="mobile-panel-photo" />
+      <ul className="mobile-panel-list">{equipment.map(({ name }) => <li key={name}>{name}</li>)}</ul>
     </dialog>
   )
 }
@@ -147,7 +84,6 @@ function MobilePanel({ dialog, panel }) {
 export default function MobileHome() {
   const main = useRef(null)
   const dialog = useRef(null)
-  const [panel, setPanel] = useState(null)
   const [section, setSection] = useState('home')
 
   useEffect(() => {
@@ -161,17 +97,12 @@ export default function MobileHome() {
   }, [])
 
   useEffect(() => {
-    if (panel && !dialog.current.open) dialog.current.showModal()
-  }, [panel])
-
-  function openPanel(name) {
-    if (panel === name) dialog.current.showModal()
-    else setPanel(name)
-  }
+    if (window.location.hash === '#projects') window.location.replace(projectsPath)
+  }, [])
 
   return (
     <div className="mobile-site">
-      <MobileHeader openProjects={() => openPanel('projects')} />
+      <MobileHeader />
       <main id="main-content" ref={main} tabIndex={-1}>
         <MobileHero />
         <ul className="mobile-sectors" aria-label="Industries served">
@@ -179,14 +110,14 @@ export default function MobileHome() {
           <li><MobileIcon name="municipal" />Municipal</li>
           <li><MobileIcon name="pipe" />Infrastructure</li>
         </ul>
-        <MobileServices openServices={() => openPanel('services')} />
+        <MobileServices />
         <section id="about" className="mobile-fleet" aria-labelledby="mobile-fleet-title">
           <div id="equipment" className="mobile-split" data-mobile-section>
             <HomeMedia slot="ABOUT_EQUIPMENT" className="mobile-split-photo" />
             <div className="mobile-split-copy">
               <h2 id="mobile-fleet-title"><span>Powerful equipment.</span><br />Precision results.</h2>
               <p>A reliable fleet for demanding projects.</p>
-              <button className="mobile-action" type="button" aria-haspopup="dialog" onClick={() => openPanel('equipment')}>Explore our fleet <MobileIcon name="arrow" /></button>
+              <button className="mobile-action" type="button" aria-haspopup="dialog" onClick={() => dialog.current.showModal()}>Explore our fleet <MobileIcon name="arrow" /></button>
             </div>
           </div>
         </section>
@@ -199,19 +130,12 @@ export default function MobileHome() {
           <div className="mobile-split-copy">
             <h2 id="mobile-dallas-title"><MobileIcon name="pin" /> Built for Dallas.</h2>
             <p>Excavation, tunneling and underground utility solutions.</p>
-            <a className="mobile-action mobile-action--outline" href={contact.websiteHref}>Start your project <MobileIcon name="arrow" /></a>
+            <a className="mobile-action mobile-action--outline" href={contact.whatsappHref}>{contact.quoteLabel} <MobileIcon name="arrow" /></a>
           </div>
         </section>
       </main>
-      <nav aria-label="Mobile navigation" className="mobile-tab-bar">
-        {tabs.map(({ id, title, icon }) => {
-          const label = <><MobileIcon name={icon} /><span>{title}</span></>
-          return id === 'projects' ? (
-            <button key={id} type="button" aria-haspopup="dialog" onClick={() => openPanel(id)}>{label}</button>
-          ) : <a key={id} href={`#${id}`} aria-current={section === id ? 'location' : undefined} onClick={() => setSection(id)}>{label}</a>
-        })}
-      </nav>
-      <MobilePanel dialog={dialog} panel={panel} />
+      <MobileTabBar activeSection={section} onNavigate={setSection} />
+      <MobileFleetPanel dialog={dialog} />
     </div>
   )
 }

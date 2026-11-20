@@ -4,8 +4,10 @@ import './index.css'
 import './styles/chatbot.css'
 import App from './App.jsx'
 
-createRoot(document.getElementById('root')).render(
+const root = document.getElementById('root')
+
+createRoot(root).render(
   <StrictMode>
-    <App />
+    <App page={root.dataset.page} />
   </StrictMode>,
 )

@@ -1,7 +1,11 @@
+const contactPhone = '469 251 6415'
+const contactNumber = `1${contactPhone.replaceAll(' ', '')}`
+
 export const contact = {
-  phone: '469 492 2175',
-  phoneHref: 'tel:+14694922175',
-  whatsappHref: 'https://wa.me/14692516415',
+  phone: contactPhone,
+  phoneHref: `tel:+${contactNumber}`,
+  whatsappHref: `https://wa.me/${contactNumber}`,
+  quoteLabel: 'Request a free quote',
   website: 'www.jdtunneling.com',
   websiteHref: 'https://www.jdtunneling.com',
   area: 'Dallas, Texas',
@@ -15,6 +19,15 @@ export const navigation = [
   { id: 'projects', label: 'Projects' },
   { id: 'contact', label: 'Contact' },
 ]
+
+export const servicesPath = `${import.meta.env.BASE_URL}services/`
+export const projectsPath = `${import.meta.env.BASE_URL}projects/`
+
+const pagePaths = { services: servicesPath, projects: projectsPath }
+
+export function navigationHref(id, currentPage) {
+  return pagePaths[id] ?? `${currentPage ? import.meta.env.BASE_URL : ''}#${id}`
+}
 
 export const equipment = [
   { name: 'JCB Excavators', slot: 'EXCAVATION', description: 'Powerful and versatile excavators for digging, trenching and site work.' },

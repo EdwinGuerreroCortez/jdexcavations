@@ -39,6 +39,8 @@ jobs:
       - name: Verify build
         run: |
           test -f dist/index.html
+          test -f dist/services/index.html
+          test -f dist/projects/index.html
           echo "Build completed successfully"
 
       - name: Deploy to Hostinger

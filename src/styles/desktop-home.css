@@ -38,6 +38,7 @@ html:has(.site-header--desktop) {
 
 .site-header--desktop .main-navigation li a { white-space: nowrap; }
 .site-header--desktop .header-quote { border-radius: 10px; }
+.site-header--desktop .main-navigation a[aria-current='page'],
 body:not(:has(main :target:not(#home))) .site-header--desktop .main-navigation a[href='#home'] {
   text-decoration: underline var(--yellow) 2px;
   text-underline-offset: .55em;

@@ -72,9 +72,6 @@
   line-height: 1.2;
 }
 
-.projects-section .catalog-dialog .project-grid { margin-top: 14px; padding-left: 0; }
-.projects-section .catalog-dialog .project-viewer h3 { font-size: 1.1rem; }
-
 .project-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-export default function ProjectGallery({ photos, visibleCount }) {
+export default function ProjectGallery({ photos }) {
   const dialogRef = useRef(null)
   const [activeIndex, setActiveIndex] = useState(null)
   const activePhoto = activeIndex === null ? null : photos[activeIndex]
@@ -26,7 +26,7 @@ export default function ProjectGallery({ photos, visibleCount }) {
     <>
       <ul className="project-grid">
         {photos.map(({ src, alt, title, caption }, index) => (
-          <li key={src} hidden={index >= visibleCount} data-reveal>
+          <li key={src}>
             <button
               className="project-card"
               type="button"

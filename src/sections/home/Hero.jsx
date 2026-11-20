@@ -18,8 +18,8 @@ export default function Hero() {
         <p className="hero-tagline hero-enter">Safety, Efficiency, Commitment.</p>
         <p className="hero-description hero-enter">Reliable excavation, tunneling and underground utility services for commercial and infrastructure projects in Dallas and surrounding areas.</p>
         <div className="hero-actions hero-enter">
-          <a className="button button--yellow" href="#contact">
-            Request a quote <span className="button-arrow" aria-hidden="true">↗</span>
+          <a className="button button--yellow" href={contact.whatsappHref}>
+            {contact.quoteLabel} <span className="button-arrow" aria-hidden="true">↗</span>
           </a>
           <a className="button button--outline hero-call" href={contact.phoneHref}>
             <InterfaceIcon name="phone" /> Call us {contact.phone}

@@ -14,8 +14,8 @@ export default function ContactSection() {
             <a className="button button--dark" href={contact.phoneHref}>
               <InterfaceIcon name="phone" /> Call us {contact.phone}
             </a>
-            <a className="button button--outline" href={contact.websiteHref}>
-              Request a quote <span className="button-arrow" aria-hidden="true">↗</span>
+            <a className="button button--outline" href={contact.whatsappHref}>
+              {contact.quoteLabel} <span className="button-arrow" aria-hidden="true">↗</span>
             </a>
           </div>
         </div>

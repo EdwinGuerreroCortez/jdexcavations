@@ -31,7 +31,7 @@ El hero y las tarjetas de servicios cargan sus fotos de Dropbox mediante enlaces
 
 El encabezado y el pie usan el PNG oficial en `src/assets/logos/`, con el isotipo enmarcado junto al nombre de la empresa.
 
-Los botones de cotización llevan a Contact. El botón «Request a quote» enlaza directamente al sitio de JD Tunneling.
+Los botones «Request a free quote» abren WhatsApp. El teléfono para llamadas y WhatsApp se configura en `src/data/site.js`.
 
 ## Galería de proyectos
 
@@ -46,7 +46,7 @@ Guarda las fotografías en `public/images/projects/` y agrega una entrada por fo
 }
 ```
 
-La sección Our Work muestra dos proyectos destacados con sus imágenes configuradas en `src/data/homeImages.js`. Al registrar fotos en `src/data/projects.js`, aparece una galería adicional. Las fotos se pueden abrir a mayor tamaño y recorrer con los botones o las flechas del teclado. El botón «View More» aparece cuando hay más de tres fotos.
+La portada de escritorio muestra tres proyectos destacados con imágenes configuradas en `src/data/homeImages.js`. La página `/projects/` reúne esas fotos y las adicionales de `src/data/projects.js`. Las fotos se pueden abrir a mayor tamaño y recorrer con los botones o las flechas del teclado.
 
 ## Desarrollo
 

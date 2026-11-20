@@ -1,12 +1,28 @@
+:root { --chatbot-left: max(20px, env(safe-area-inset-left)); }
+
 /* The installer updates the iframe's inline placement when the chat opens and closes. */
 iframe#chatbot_de7cf6a0-39f8-4ef9-a8e5-b0cbdbe0be27 {
-  left: max(20px, env(safe-area-inset-left)) !important;
+  left: var(--chatbot-left) !important;
   right: auto !important;
 }
 
 #chatbot_badge_de7cf6a0-39f8-4ef9-a8e5-b0cbdbe0be27 {
-  left: calc(max(20px, env(safe-area-inset-left)) + 4px) !important;
+  left: calc(var(--chatbot-left) + 4px) !important;
   right: auto !important;
+}
+
+/* The installer's welcome bubble is an unlabelled sibling of its iframe. */
+iframe#chatbot_de7cf6a0-39f8-4ef9-a8e5-b0cbdbe0be27 ~ div[style*='z-index: 2147483646'][style*='pointer-events: none'] {
+  left: calc(var(--chatbot-left) + 92px) !important;
+  right: auto !important;
+}
+
+iframe#chatbot_de7cf6a0-39f8-4ef9-a8e5-b0cbdbe0be27 ~ div[style*='z-index: 2147483646'][style*='pointer-events: none'] > div:first-child {
+  inset: 50% auto auto -8px !important;
+  border: 0 !important;
+  border-bottom: 1.5px solid #e2e8f0 !important;
+  border-left: 1.5px solid #e2e8f0 !important;
+  transform: translateY(-50%) rotate(45deg) !important;
 }
 
 @media (max-width: 640px) {
@@ -17,10 +33,26 @@ iframe#chatbot_de7cf6a0-39f8-4ef9-a8e5-b0cbdbe0be27 {
   #chatbot_badge_de7cf6a0-39f8-4ef9-a8e5-b0cbdbe0be27 {
     bottom: calc(var(--mobile-nav-height) + 58px + env(safe-area-inset-bottom)) !important;
   }
+
+  iframe#chatbot_de7cf6a0-39f8-4ef9-a8e5-b0cbdbe0be27 ~ div[style*='z-index: 2147483646'][style*='pointer-events: none'] {
+    bottom: calc(var(--mobile-nav-height) + 26px + env(safe-area-inset-bottom)) !important;
+  }
 }
 
 @media (max-width: 480px) {
   iframe#chatbot_de7cf6a0-39f8-4ef9-a8e5-b0cbdbe0be27[style*='width: 100%'] {
     left: 0 !important;
+  }
+
+  iframe#chatbot_de7cf6a0-39f8-4ef9-a8e5-b0cbdbe0be27 ~ div[style*='z-index: 2147483646'][style*='pointer-events: none'] {
+    left: var(--chatbot-left) !important;
+    bottom: calc(var(--mobile-nav-height) + 108px + env(safe-area-inset-bottom)) !important;
+  }
+
+  iframe#chatbot_de7cf6a0-39f8-4ef9-a8e5-b0cbdbe0be27 ~ div[style*='z-index: 2147483646'][style*='pointer-events: none'] > div:first-child {
+    inset: auto auto -8px 33px !important;
+    border-left: 0 !important;
+    border-right: 1.5px solid #e2e8f0 !important;
+    transform: rotate(45deg) !important;
   }
 }

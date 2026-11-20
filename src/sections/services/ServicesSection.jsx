@@ -1,9 +1,7 @@
-import { useRef } from 'react'
-import CatalogDialog from '../../components/common/CatalogDialog.jsx'
 import HomeMedia from '../../components/common/HomeMedia.jsx'
 import SectionHeading from '../../components/common/SectionHeading.jsx'
 import InterfaceIcon from '../../components/ui/MobileIcon.jsx'
-import { services } from '../../data/site.js'
+import { contact, services, servicesPath } from '../../data/site.js'
 import './services.css'
 
 const featuredServices = [
@@ -31,37 +29,25 @@ function ServiceCard({ id, slot, icon, summary, title = serviceById[id].name }) 
         </span>
       </summary>
       <div className="service-card-details">
-        <a href="#contact">Request a quote <span aria-hidden="true">↗</span></a>
+        <a href={contact.whatsappHref}>{contact.quoteLabel} <span aria-hidden="true">↗</span></a>
       </div>
     </details>
   )
 }
 
 export default function ServicesSection() {
-  const allServices = useRef(null)
-
   return (
     <section id="services" className="section services-section" aria-labelledby="services-title" tabIndex={-1}>
       <div className="container">
         <div className="services-heading">
-          <SectionHeading id="services-title" eyebrow="Our Services">Our Services</SectionHeading>
-          <button className="all-services-button text-link" type="button" aria-haspopup="dialog" onClick={() => allServices.current.showModal()}>
+          <SectionHeading id="services-title" eyebrow="Sitework & Underground Utilities">Our Services</SectionHeading>
+          <a className="all-services-button text-link" href={servicesPath}>
             <span>View all services</span> <span aria-hidden="true">→</span>
-          </button>
+          </a>
         </div>
         <div className="service-grid">
           {featuredServices.map((service) => <ServiceCard key={service.id} {...service} />)}
         </div>
-        <CatalogDialog dialogRef={allServices} title="All services">
-          <ul>
-            {services.map(({ name, icon, description }) => (
-              <li key={icon}>
-                <h3>{name}</h3>
-                <p>{description}</p>
-              </li>
-            ))}
-          </ul>
-        </CatalogDialog>
       </div>
     </section>
   )
