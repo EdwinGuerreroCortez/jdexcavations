@@ -130,7 +130,7 @@ function MobilePanel({ dialog, panel }) {
       {panel === 'equipment' && (
         <>
           <HomeMedia slot="ABOUT_EQUIPMENT" className="mobile-panel-photo" />
-          <ul className="mobile-panel-list">{equipment.map((name) => <li key={name}>{name}</li>)}</ul>
+          <ul className="mobile-panel-list">{equipment.map(({ name }) => <li key={name}>{name}</li>)}</ul>
         </>
       )}
       {panel === 'projects' && (

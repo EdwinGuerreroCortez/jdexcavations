@@ -3,7 +3,6 @@
   --mobile-gold: #ffb800;
   --mobile-cyan: #13c9d8;
   --mobile-gutter: clamp(9px, 2.6vw, 16px);
-  --mobile-nav-height: 65px;
   --mobile-radius: clamp(15px, 4.2vw, 27px);
   min-height: 100svh;
   padding-bottom: calc(var(--mobile-nav-height) + env(safe-area-inset-bottom));

@@ -14,6 +14,7 @@
   --gray: #484949;
   --paper: #f8f5f0;
   --header-height: clamp(66px, 7vw, 96px);
+  --mobile-nav-height: 65px;
   --gutter: clamp(20px, 4vw, 72px);
   --radius: 8px;
 }

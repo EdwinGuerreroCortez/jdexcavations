@@ -1,0 +1,26 @@
+/* The installer updates the iframe's inline placement when the chat opens and closes. */
+iframe#chatbot_de7cf6a0-39f8-4ef9-a8e5-b0cbdbe0be27 {
+  left: max(20px, env(safe-area-inset-left)) !important;
+  right: auto !important;
+}
+
+#chatbot_badge_de7cf6a0-39f8-4ef9-a8e5-b0cbdbe0be27 {
+  left: calc(max(20px, env(safe-area-inset-left)) + 4px) !important;
+  right: auto !important;
+}
+
+@media (max-width: 640px) {
+  iframe#chatbot_de7cf6a0-39f8-4ef9-a8e5-b0cbdbe0be27[style*='width: 80px'] {
+    bottom: calc(var(--mobile-nav-height) + 12px + env(safe-area-inset-bottom)) !important;
+  }
+
+  #chatbot_badge_de7cf6a0-39f8-4ef9-a8e5-b0cbdbe0be27 {
+    bottom: calc(var(--mobile-nav-height) + 58px + env(safe-area-inset-bottom)) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  iframe#chatbot_de7cf6a0-39f8-4ef9-a8e5-b0cbdbe0be27[style*='width: 100%'] {
+    left: 0 !important;
+  }
+}

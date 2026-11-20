@@ -27,8 +27,9 @@
   .service-card summary:hover .service-arrow { translate: 3px 0; }
 
   .home-media img, .media-placeholder::before { transition: scale .45s var(--motion-ease); }
-  :is(.service-card, .featured-project, .about-media):hover :is(.home-media img, .media-placeholder::before),
-  picture.about-media:hover img, .media-placeholder.about-media:hover::before {
+  :is(.service-card, .featured-project, .equipment-card):hover .home-media img,
+  .company-about-photo:hover img,
+  :is(.service-card, .featured-project, .equipment-card):hover .media-placeholder::before {
     scale: 1.045;
   }
 }

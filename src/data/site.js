@@ -8,13 +8,19 @@ export const contact = {
 }
 
 export const navigation = [
+  { id: 'home', label: 'Home' },
+  { id: 'about', label: 'About Us' },
   { id: 'services', label: 'Services' },
-  { id: 'projects', label: 'Our Work' },
-  { id: 'about', label: 'About' },
+  { id: 'equipment', label: 'Equipment' },
+  { id: 'projects', label: 'Projects' },
   { id: 'contact', label: 'Contact' },
 ]
 
-export const equipment = ['JCB Excavators', 'Vermeer D20x22', 'Construction Equipment']
+export const equipment = [
+  { name: 'JCB Excavators', slot: 'EXCAVATION', description: 'Powerful and versatile excavators for digging, trenching and site work.' },
+  { name: 'Vermeer D20x22', slot: 'ABOUT_EQUIPMENT', description: 'Directional drilling equipment for efficient, low-impact utility installation.' },
+  { name: 'Construction Equipment' },
+]
 
 export const services = [
   { name: 'Directional Boring', icon: 'boring', description: 'Create underground paths for utilities with limited surface disruption.' },

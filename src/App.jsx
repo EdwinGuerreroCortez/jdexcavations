@@ -5,6 +5,7 @@ import WhatsAppButton from './components/ui/WhatsAppButton.jsx'
 import HomePage from './pages/HomePage.jsx'
 import MobileHome from './pages/MobileHome.jsx'
 import './App.css'
+import './styles/desktop-home.css'
 
 const mobileQuery = '(max-width: 640px)'
 

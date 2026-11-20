@@ -1,0 +1,25 @@
+.catalog-dialog {
+  width: min(90vw, 720px);
+  max-height: 84dvh;
+  padding: clamp(18px, 3vw, 36px);
+  border: 1px solid #b48a16;
+  border-radius: 15px;
+  background: #191919;
+  color: var(--white);
+}
+
+.catalog-dialog::backdrop { background: #000b; }
+.catalog-dialog-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.catalog-dialog-heading button {
+  padding: 7px 14px;
+  border: 1px solid var(--yellow);
+  border-radius: 6px;
+  background: var(--yellow);
+  color: var(--black);
+  cursor: pointer;
+}
+
+.catalog-dialog ul { display: grid; gap: 12px; margin: 18px 0 0; padding-left: 1.2em; }
+.catalog-dialog li::marker { color: var(--yellow); }
+.catalog-dialog li h3 { font-size: 1rem; }
+.catalog-dialog li p { margin-top: 3px; color: #e4e3e0; }

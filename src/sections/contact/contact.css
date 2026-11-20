@@ -1,0 +1,51 @@
+.contact-section {
+  padding-block: clamp(18px, 2.65vw, 44px);
+  background: var(--yellow);
+  color: var(--black);
+}
+
+.contact-section .contact-inner {
+  display: grid;
+  width: min(calc(100% - var(--desktop-gutter, var(--gutter)) * 2), 1680px);
+  grid-template-columns: 1.37fr 1fr;
+  align-items: center;
+  gap: clamp(15px, 4.1vw, 62px);
+  padding-inline: clamp(13px, 3.3vw, 48px);
+}
+
+.contact-intro > p {
+  font-size: clamp(.75rem, 1.55vw, 1.18rem);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.contact-section .contact-intro h2 {
+  margin-top: 3px;
+  font-family: var(--desktop-condensed, Impact, sans-serif);
+  font-size: clamp(2.14rem, 5.3vw, 5rem);
+  font-weight: 500;
+  letter-spacing: -.015em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.contact-actions { display: flex; flex-wrap: wrap; gap: 7px 10px; margin-top: clamp(7px, 1.08vw, 17px); }
+.contact-section .contact-actions .button {
+  min-height: clamp(38px, 4.15vw, 53px);
+  padding: 6px clamp(7px, 1.3vw, 20px);
+  font-family: var(--desktop-condensed, Impact, sans-serif);
+  font-size: clamp(.8rem, 1.45vw, 1.14rem);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.contact-actions .button svg { width: 1.12em; height: 1.12em; color: var(--yellow); }
+.contact-actions .button--outline { border-color: #534018; }
+.contact-actions .button--outline:is(:hover, :focus-visible) { border-color: var(--black); background: var(--black); color: var(--yellow); }
+
+.contact-section-details {
+  padding: 2px 0 2px clamp(13px, 5vw, 75px);
+  border-left: 1px solid #17191a77;
+  font-size: clamp(.87rem, 1.8vw, 1.25rem);
+  font-weight: 800;
+}

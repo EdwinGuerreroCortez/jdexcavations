@@ -1,4 +1,4 @@
-﻿.site-header {
+.site-header {
   position: sticky;
   z-index: 10;
   top: 0;
@@ -7,7 +7,7 @@
   border-bottom: 1px solid #17191a12;
 }
 
-.header-inner, .footer-inner {
+.header-inner {
   display: flex;
   min-height: var(--header-height);
   align-items: center;
@@ -54,7 +54,7 @@
   gap: clamp(22px, 5.2vw, 72px);
 }
 
-.main-navigation ul, .site-footer ul {
+.main-navigation ul {
   display: flex;
   align-items: center;
   gap: clamp(16px, 3.4vw, 48px);
@@ -63,7 +63,7 @@
   list-style: none;
 }
 
-.main-navigation li a, .site-footer nav a {
+.main-navigation li a {
   display: inline-flex;
   min-height: 44px;
   align-items: center;
@@ -84,22 +84,6 @@
 }
 
 .menu-toggle { display: none; }
-
-.site-footer { background: var(--black); color: var(--white); }
-.footer-inner { padding-block: 12px; }
-.site-footer .brand-mark { width: clamp(50px, 7vw, 76px); }
-.site-footer .brand-copy strong { font-style: normal; }
-.site-footer .brand-copy > span { color: var(--chrome); font-size: .83rem; }
-
-.site-footer nav {
-  width: min(62%, 780px);
-  padding-left: clamp(18px, 5vw, 84px);
-  border-left: 1px solid #ffffff38;
-}
-
-.site-footer ul { justify-content: space-between; }
-.site-footer nav a { font-weight: 650; }
-.site-footer nav a:is(:hover, :focus-visible) { color: var(--yellow); }
 
 @media (max-width: 640px) {
   .menu-toggle {
@@ -148,7 +132,4 @@
   .main-navigation li { border-bottom: 1px solid #17191a18; }
   .main-navigation li a { width: 100%; font-size: .95rem; }
 
-  .footer-inner { display: grid; gap: 10px; padding-block: 18px; }
-  .site-footer nav { width: 100%; padding: 0; border: 0; }
-  .site-footer ul { flex-wrap: wrap; gap: 0 18px; }
 }

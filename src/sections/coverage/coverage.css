@@ -1,0 +1,198 @@
+.coverage-section {
+  --coverage-gold: #ffc400;
+  padding-block: clamp(16px, 1.45vw, 28px) clamp(18px, 3vw, 57px);
+  background: #080808;
+  color: var(--white);
+}
+
+.coverage-container { width: min(calc(100% - clamp(24px, 3.75vw, 72px)), 1848px); margin-inline: auto; }
+.coverage-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(9px, 1.4vw, 28px);
+  padding-inline: clamp(0px, 1.45vw, 28px);
+}
+
+.coverage-panel, .coverage-cta {
+  position: relative;
+  isolation: isolate;
+  border-radius: clamp(16px, 2vw, 40px);
+}
+
+.coverage-panel::before, .coverage-cta::before {
+  content: '';
+  position: absolute;
+  inset: -2px 17% auto;
+  height: 2px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, transparent, #ffc400 20%, #ffe39d 50%, #ffc400 80%, transparent);
+  box-shadow: 0 0 12px 2px #ffb80082;
+  pointer-events: none;
+}
+
+.coverage-panel {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  padding: clamp(10px, 1.55vw, 30px);
+  border: 1px solid #ffffff70;
+}
+
+.coverage-panel--counties {
+  background: linear-gradient(148deg, #fffdfa, #f1f0ed);
+  color: #0c111d;
+}
+
+.coverage-panel--projects { background: linear-gradient(155deg, #202020, #0c0c0c 58%); }
+
+.coverage-panel-heading {
+  display: grid;
+  min-height: clamp(60px, 4.9vw, 94px);
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(5px, .8vw, 16px);
+  margin-bottom: clamp(8px, .9vw, 18px);
+}
+
+.coverage-panel-heading svg, .coverage-cta-title svg {
+  width: clamp(28px, 5.2vw, 98px);
+  height: auto;
+  color: var(--coverage-gold);
+}
+
+.coverage-panel-heading h2, .coverage-cta h2 {
+  font-size: clamp(1.08rem, 2.2vw, 2.72rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -.045em;
+}
+
+.coverage-count {
+  justify-self: end;
+  padding: .36em .88em;
+  border: 1px solid var(--coverage-gold);
+  border-radius: 100px;
+  background: var(--coverage-gold);
+  color: #111;
+  font-size: clamp(.66rem, 1.31vw, 1.5rem);
+  font-weight: 850;
+  line-height: 1.25;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.coverage-panel--projects .coverage-count { background: transparent; color: var(--coverage-gold); }
+
+.coverage-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(6px, .55vw, 11px) clamp(6px, 1vw, 20px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.coverage-options button {
+  display: flex;
+  width: 100%;
+  min-height: clamp(36px, 3.05vw, 59px);
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  padding: 5px clamp(6px, 1.15vw, 22px);
+  border: 1px solid #13131325;
+  border-radius: clamp(8px, .9vw, 17px);
+  background: #ffffff40;
+  color: inherit;
+  font-size: clamp(.74rem, 1.46vw, 1.76rem);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -.035em;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color .2s, background-color .2s;
+}
+
+.coverage-options button span:first-child { min-width: 0; overflow-wrap: anywhere; }
+.coverage-panel--projects .coverage-options button { border-color: #ffffff5c; background: #ffffff13; }
+.coverage-options button:is(:hover, :focus-visible) { border-color: #aa7400; background: #ffc40026; }
+.coverage-panel--projects .coverage-options button:is(:hover, :focus-visible) { border-color: var(--coverage-gold); background: #ffc40020; }
+.coverage-option-arrow { flex: none; color: #a96d00; font-size: 1.25em; line-height: 1; }
+.coverage-panel--projects .coverage-option-arrow { color: var(--coverage-gold); }
+
+.coverage-location { margin-top: auto; padding-top: clamp(5px, .4vw, 8px); text-align: center; }
+.coverage-skyline { display: block; width: min(78%, 545px); height: auto; margin: 0 auto; color: #eda900; }
+.coverage-location p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(7px, 1vw, 20px);
+  margin-top: 2px;
+  font-size: clamp(.82rem, 1.65vw, 1.95rem);
+  font-weight: 850;
+  line-height: 1.2;
+  letter-spacing: -.035em;
+}
+
+.coverage-location p::before, .coverage-location p::after {
+  content: '';
+  flex: 0 1 clamp(15px, 4.5vw, 86px);
+  height: clamp(2px, .22vw, 4px);
+  background: #eda900;
+}
+
+.coverage-photo {
+  flex: none;
+  aspect-ratio: 3.23;
+  margin-top: auto;
+  border-radius: clamp(10px, 1.25vw, 24px);
+}
+
+.coverage-panel--projects .coverage-options { margin-bottom: clamp(10px, 1.6vw, 31px); }
+.coverage-photo img { object-position: center 86%; }
+
+.coverage-cta {
+  display: grid;
+  grid-template-columns: minmax(0, 1.24fr) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(8px, 1.45vw, 28px);
+  margin-top: clamp(16px, 1.9vw, 37px);
+  padding: clamp(10px, 1.25vw, 24px) clamp(9px, 1.55vw, 30px);
+  border: 2px solid var(--coverage-gold);
+  background: linear-gradient(155deg, #1b1b1b, #090909 65%);
+}
+
+.coverage-cta-title { display: flex; min-width: 0; align-items: center; gap: clamp(5px, .8vw, 16px); }
+.coverage-cta-title svg { width: clamp(24px, 4vw, 76px); }
+.coverage-cta h2 { font-size: clamp(1rem, 2.05vw, 2.45rem); }
+.coverage-cta > p {
+  padding-left: clamp(8px, 1.5vw, 29px);
+  border-left: 2px solid var(--coverage-gold);
+  font-size: clamp(.76rem, 1.38vw, 1.63rem);
+  line-height: 1.25;
+}
+
+.coverage-section .coverage-quote {
+  min-height: clamp(40px, 3.55vw, 69px);
+  padding: .48em .98em;
+  border-radius: 99px;
+  font-size: clamp(.82rem, 1.65vw, 1.98rem);
+  letter-spacing: -.04em;
+}
+
+.coverage-quote svg { flex: none; width: .88em; height: .88em; }
+.coverage-dialog-copy { margin-block: 12px 19px; line-height: 1.45; }
+
+@media (max-width: 900px) {
+  .coverage-panel-heading svg { width: clamp(25px, 4.6vw, 39px); }
+  .coverage-count { max-width: 76px; }
+  .coverage-cta { grid-template-columns: minmax(0, 1fr) auto; }
+  .coverage-cta > p { grid-column: 1; grid-row: 2; padding-left: 0; border-left: 0; }
+  .coverage-cta > a { grid-column: 2; grid-row: 1 / span 2; }
+}
+
+@media (max-width: 700px) {
+  .coverage-panel-heading { grid-template-columns: auto minmax(0, 1fr); gap: 4px 6px; }
+  .coverage-count { grid-column: 2; justify-self: start; max-width: none; }
+}
