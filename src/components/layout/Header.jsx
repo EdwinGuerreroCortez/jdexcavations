@@ -37,7 +37,7 @@ export default function Header() {
             ))}
           </ul>
           <a className="button button--yellow header-quote" href="#contact" onClick={() => setOpen(false)}>
-            Request a Quote <span className="button-arrow" aria-hidden="true">↗</span>
+            Get a quote
           </a>
         </nav>
       </div>

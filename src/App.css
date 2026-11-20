@@ -1,82 +1,82 @@
-@import './styles/header.css';
+﻿@import './styles/header.css';
 @import './styles/home.css';
 @import './styles/home-motion.css';
 
 .container {
-  width: min(100% - clamp(32px, 10vw, 144px), 1280px);
+  width: min(calc(100% - var(--gutter) * 2), 1380px);
   margin-inline: auto;
 }
 
-.section { padding-block: clamp(64px, 9vw, 132px); }
+.section { padding-block: clamp(38px, 5.4vw, 86px); }
 
-.section-heading { margin-bottom: clamp(24px, 4vw, 52px); }
+.section-heading { margin-bottom: clamp(22px, 4.5vw, 60px); }
 
-.section-heading h2 {
-  font-family: var(--heading-font);
-  font-size: clamp(2.65rem, 5.8vw, 5rem);
+.section-heading h2, .contact-section h2, .hero h1 {
   font-weight: 900;
-  line-height: .98;
-  letter-spacing: -.025em;
-  text-transform: uppercase;
+  line-height: 1;
+  letter-spacing: -.065em;
 }
 
-.section-description {
-  margin-top: 14px;
-  color: var(--gray);
-  line-height: 1.55;
-}
+.section-heading h2 { font-size: clamp(2.35rem, 7vw, 5.8rem); }
+
+.accent { color: var(--yellow); }
 
 .eyebrow {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 18px;
-  font-size: .74rem;
+  font-size: clamp(.72rem, 1.4vw, .93rem);
   font-weight: 800;
-  letter-spacing: .18em;
+  letter-spacing: .055em;
   text-transform: uppercase;
 }
 
 .eyebrow::before {
   content: '';
-  width: 25px;
+  flex: 0 0 clamp(20px, 3.4vw, 40px);
   height: 3px;
   background: var(--yellow);
 }
 
-.button-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
 .button {
   display: inline-flex;
-  min-height: 50px;
+  min-height: clamp(46px, 6.5vw, 66px);
   align-items: center;
   justify-content: center;
-  gap: 11px;
-  padding: 11px 18px;
+  gap: .65em;
+  padding: .68em 1.28em;
   border: 1px solid transparent;
-  font-size: .75rem;
-  font-weight: 850;
-  line-height: 1.25;
-  letter-spacing: .055em;
+  border-radius: 6px;
+  font-size: clamp(.95rem, 2vw, 1.2rem);
+  font-weight: 800;
+  line-height: 1.2;
   text-align: center;
   text-decoration: none;
-  text-transform: uppercase;
   transition: background-color .2s, color .2s, border-color .2s;
 }
 
-.button-arrow { font-size: 1.05rem; line-height: 1; }
-
+.button-arrow { display: inline-block; line-height: 1; }
 .button--yellow { background: var(--yellow); color: var(--black); }
-.button--yellow:hover { background: var(--white); }
-.button--yellow:focus-visible { outline-color: var(--yellow); }
-.button--outline { border-color: var(--chrome); }
-.button--outline:hover { border-color: var(--yellow); color: var(--yellow); }
+.button--yellow:is(:hover, :focus-visible) { background: #ffda4e; }
 .button--dark { background: var(--black); color: var(--white); }
-.button--dark:hover { background: var(--charcoal); color: var(--yellow); }
+.button--dark:is(:hover, :focus-visible) { background: #303232; color: var(--yellow); }
+.button--outline { border-color: currentColor; }
+.button--outline:is(:hover, :focus-visible) { border-color: var(--yellow); color: var(--yellow); }
+
+.text-link {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: .4em;
+  width: fit-content;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.text-link > span:first-child {
+  text-decoration: underline var(--yellow) 2px;
+  text-underline-offset: .35em;
+}
 
 .skip-link {
   position: fixed;

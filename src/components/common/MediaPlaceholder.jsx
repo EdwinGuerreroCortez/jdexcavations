@@ -1,8 +1,6 @@
-export default function MediaPlaceholder({ children, variant, className = '' }) {
+export default function MediaPlaceholder({ variant = 'site', className = '' }) {
   return (
-    <div className={`media-placeholder media-placeholder--${variant} ${className}`} data-reveal>
-      {children && <span>{children}</span>}
-    </div>
+    <span className={`media-placeholder media-placeholder--${variant} ${className}`} aria-hidden="true" />
   )
 }
 

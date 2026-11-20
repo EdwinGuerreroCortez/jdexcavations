@@ -1,100 +1,34 @@
-:root {
-  --motion-ease: cubic-bezier(.22, .61, .36, 1);
-}
-
-.hero-photo {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-}
-
-.hero-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.hero-photo::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(90deg, #151515ed 0%, #151515d4 33%, #151515aa 57%, #15151582 77%, #15151518 100%),
-    linear-gradient(180deg, #15151555, transparent 22% 74%, #151515d9),
-    linear-gradient(125deg, transparent 67%, #ffc40018);
-}
-
-.hero-contours { opacity: .25; }
+﻿:root { --motion-ease: cubic-bezier(.22, .61, .36, 1); }
 
 @media (prefers-reduced-motion: no-preference) {
-  .hero-photo, .hero-contours { animation: hero-fade-in .65s var(--motion-ease) backwards; }
-  .hero-stripe { transform-origin: left; animation: stripe-in .66s var(--motion-ease) backwards; }
-
-  .hero-inner :is(.hero-enter, h1 span) {
-    animation: hero-rise var(--hero-entry-duration, 480ms) var(--motion-ease) backwards;
-    animation-delay: var(--hero-delay, 110ms);
-  }
-
-  .hero-inner h1 span:nth-child(1) { --hero-delay: 145ms; }
-  .hero-inner h1 span:nth-child(2) { --hero-delay: 190ms; }
-  .hero-inner h1 span:nth-child(3) { --hero-delay: 235ms; }
-  .hero-tagline { --hero-delay: 285ms; }
-  .hero-description { --hero-delay: 330ms; --hero-entry-duration: 420ms; }
-  .hero-inner .button { --hero-delay: 395ms; --hero-entry-duration: 345ms; }
-  .hero-inner .button + .button { --hero-delay: 455ms; }
-  .hero-inner .button:focus { animation: none; }
-
-  @keyframes hero-fade-in { from { opacity: 0; } }
-  @keyframes hero-rise { from { opacity: 0; translate: 0 15px; } }
-  @keyframes stripe-in { from { opacity: .65; scale: .93 1; } }
+  .hero-enter { animation: home-rise .55s var(--motion-ease) backwards; }
+  .hero-enter:nth-child(2) { animation-delay: 65ms; }
+  .hero-enter:nth-child(3) { animation-delay: 130ms; }
+  .hero-enter:nth-child(4) { animation-delay: 195ms; }
 
   [data-reveal][data-revealed]:not(:focus-within):not(:target) {
     animation: home-rise .58s var(--motion-ease) backwards;
     animation-delay: var(--reveal-delay, 0ms);
   }
 
-  [data-reveal]:nth-child(4n + 2) { --reveal-delay: 55ms; }
-  [data-reveal]:nth-child(4n + 3) { --reveal-delay: 90ms; }
-  [data-reveal]:nth-child(4n + 4) { --reveal-delay: 125ms; }
+  [data-reveal]:nth-child(3n + 2) { --reveal-delay: 50ms; }
+  [data-reveal]:nth-child(3n + 3) { --reveal-delay: 95ms; }
 
   @keyframes home-rise {
-    from { opacity: .25; translate: 0 14px; }
+    from { opacity: .35; translate: 0 13px; }
     to { opacity: 1; translate: none; }
   }
 }
 
-@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .button-arrow, .service-icon-frame { transition: translate .27s var(--motion-ease); }
-  .button:hover .button-arrow { translate: 2px -2px; }
-  .service-card:hover .service-icon-frame { translate: 0 -2px; }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .button-arrow, .service-arrow { transition: translate .25s var(--motion-ease); }
+  .button:hover .button-arrow, .text-link:hover .button-arrow { translate: 2px -2px; }
+  .hero .text-link:hover .button-arrow { translate: 0 3px; }
+  .service-card summary:hover .service-arrow { translate: 3px 0; }
 
-  .equipment-card {
-    transition: translate .27s var(--motion-ease), box-shadow .27s var(--motion-ease);
+  .home-media img, .media-placeholder::before { transition: scale .45s var(--motion-ease); }
+  :is(.service-card, .featured-project, .about-media):hover :is(.home-media img, .media-placeholder::before),
+  picture.about-media:hover img, .media-placeholder.about-media:hover::before {
+    scale: 1.045;
   }
-
-  .equipment-card:hover {
-    translate: 0 -4px;
-    box-shadow: 0 12px 20px #15151519;
-  }
-}
-
-@media (max-width: 720px) {
-  .hero-inner { padding-block: clamp(140px, 36vw, 255px) 64px; }
-  .hero-art { background: var(--black); }
-  .hero-photo { bottom: auto; }
-  .hero-photo img { height: auto; }
-  .hero-photo::after {
-    background: linear-gradient(180deg, #15151516 0%, #15151528 46%, #151515ab 77%, var(--black) 100%);
-  }
-  .hero-contours { opacity: .15; }
-}
-
-@media (max-width: 350px) {
-  .hero h1 { font-size: clamp(1.64rem, 8.25vw, 1.9rem); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .service-card:hover, .service-card:target, .media-placeholder:hover::before,
-  .equipment-card:hover .media-placeholder::before { transform: none; }
 }

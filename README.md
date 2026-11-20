@@ -25,13 +25,28 @@ Las carpetas vacías contienen un archivo `.gitkeep` para conservar su ubicació
 
 ## Home provisional
 
-La portada muestra la imagen panorámica proporcionada por JD Excavation mediante la URL de Dropbox configurada en `src/sections/home/Hero.jsx`. En pantallas pequeñas, la imagen se sitúa arriba y se funde con el fondo oscuro detrás del texto. Las animaciones de entrada respetan `prefers-reduced-motion`.
+Las siete posiciones de fotografía se configuran en `src/data/homeImages.js`. Reemplaza el valor de `src` de cada posición con la URL definitiva. Un valor `null` muestra un marcador provisional. Para `HERO_BACKGROUND`, sustituye también `mobileSrc` o quítalo para usar la misma imagen en todos los tamaños.
 
-Las secciones About Us, Equipment y Projects tienen espacios provisionales para fotografías de JD Excavation.
+El hero y las tarjetas de servicios cargan sus fotos de Dropbox mediante enlaces compartidos con `raw=1`. Las animaciones de entrada respetan `prefers-reduced-motion`.
 
-El encabezado y el pie usan una copia JPEG ligera del logotipo oficial. El PNG original se conserva en `src/assets/logos/` y sirve de respaldo en el componente `Brand`.
+El encabezado y el pie usan el PNG oficial en `src/assets/logos/`, con el isotipo enmarcado junto al nombre de la empresa.
 
-Los botones de cotización llevan a Contact. Desde allí se puede llamar al número publicado o abrir el sitio de JD Tunneling.
+Los botones de cotización llevan a Contact. El botón «Request a quote» enlaza directamente al sitio de JD Tunneling.
+
+## Galería de proyectos
+
+Guarda las fotografías en `public/images/projects/` y agrega una entrada por foto en `src/data/projects.js`. Usa un título breve y un texto alternativo en inglés que describa lo que aparece en la imagen. El campo `caption` es opcional.
+
+```js
+{
+  src: '/images/projects/nombre-del-archivo.webp',
+  alt: 'Describe the visible work',
+  title: 'Project or work title',
+  caption: 'Optional details about the work',
+}
+```
+
+La sección Our Work muestra dos proyectos destacados con sus imágenes configuradas en `src/data/homeImages.js`. Al registrar fotos en `src/data/projects.js`, aparece una galería adicional. Las fotos se pueden abrir a mayor tamaño y recorrer con los botones o las flechas del teclado. El botón «View More» aparece cuando hay más de tres fotos.
 
 ## Desarrollo
 
